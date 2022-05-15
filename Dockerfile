@@ -13,5 +13,5 @@ ENV PATH=/opt/poetry/bin:$PATH
 # Env variable helper script
 COPY ./credentials_env_variables.sh /opt/credentials_env_variables.sh
 
-# Use bash by default, not python
-CMD source /opt/credentials_env_variables.sh && /opt/poetry/bin/poetry publish --build
+# Use bash by default, not python, and should run defining vars and publishing/building with poetry
+ENTRYPOINT /bin/bash -c "source /opt/credentials_env_variables.sh && /opt/poetry/bin/poetry publish --build"
