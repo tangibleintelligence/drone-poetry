@@ -11,14 +11,12 @@ steps:
   - name: build and push docker
     image: plugins/docker
     settings:
-      # Repo: austin1howard/drone-plugin-poetry
-      # Version: 1.0.0-poetry1.1, 1.0.0-poetry1.1.13, and latest
       username: "austin1howard"
       password:
         from_secret: dockerhub_token
       repo: austin1howard/drone-plugin-poetry
       tags:
         - latest
-        - 1.0.0-poetry1.1
-        - 1.0.0-poetry1.1.13
+        - 1.0.1-poetry1.1
+        - 1.0.1-poetry1.1.13
       squash: true
