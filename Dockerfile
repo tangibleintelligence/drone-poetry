@@ -12,7 +12,8 @@ ENV PATH=/opt/poetry/bin:$PATH
 
 # copy in scripts
 COPY ./credentials_env_variables.sh /opt/credentials_env_variables.sh
-COPY --chmod=744 ./run-poetry.sh /opt/run-poetry.sh
+COPY ./run-poetry.sh /opt/run-poetry.sh
+RUN chmod 744 /opt/run-poetry.sh
 
 # Use bash by default, not python, and should run defining vars and publishing/building with poetry
 CMD /opt/run-poetry.sh
