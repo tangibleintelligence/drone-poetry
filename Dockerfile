@@ -10,8 +10,9 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 # Add to path
 ENV PATH=/opt/poetry/bin:$PATH
 
-# Env variable helper script
+# copy in scripts
 COPY ./credentials_env_variables.sh /opt/credentials_env_variables.sh
+COPY --chmod=744 ./run-poetry.sh /opt/run-poetry.sh
 
 # Use bash by default, not python, and should run defining vars and publishing/building with poetry
-ENTRYPOINT /bin/bash -c "source /opt/credentials_env_variables.sh && /opt/poetry/bin/poetry build && /opt/poetry/bin/poetry publish -n ${PUBLISH_REPO_CMDLINE}"
+CMD /opt/run-poetry.sh
